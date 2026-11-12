@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: whatsapp-ai-bridge
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node src/index.js
+    healthCheckPath: /health
+    envVars:
+      - key: BOT_NUMBER
+        sync: false
+      - key: TESTER_NUMBER
+        sync: false
+      - key: REPLIES_ENABLED
+        value: "false"
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-3.8-flash
